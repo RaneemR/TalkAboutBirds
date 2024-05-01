@@ -22,15 +22,18 @@
   <div id="collectionTableDiv">
     <table id="showTableCollection">
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Tail</th>
             <th>Wing</th>
             <th>Movement</th>
             <th>Color</th>
         </tr>
+
         
         <% for(var i=0; i < birds.length; i++) { %>
             <tr>
+                <td><%= birds[i].birdID %></td>
                 <td> <a href = "/posts/<%= birds[i].birdID %>"> <%= birds[i].commonName %></a></td>
                 <td><%= birds[i].tailType %></td>
                 <td><%= birds[i].wingType %></td>
