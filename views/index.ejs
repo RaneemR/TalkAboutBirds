@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Bird Size</title>
+</head>
+<body>
+
+  <div class="header">
+    <h2>Let's Talk Birds</h2>
+    <p>A space to enjoy talking with others about bird watching.</p>
+
+  </div>
+  
+
+    <!-- Slideshow container -->
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <img src="extra/img1.jpg" style="width:100%" height="500">
+    </div>
+  
+    <div class="mySlides fade">
+      <!--div class="numbertext">2 / 3</div-->
+      <img src="extra/img2.jpg" style="width:100%" height="500">
+      <!--div class="text">Caption Two</div-->
+    </div>
+  
+    <div class="mySlides fade">
+      <img src="extra/img3.jpg" style="width:100%" height="500">
+    </div>
+
+  
+    <div class="mySlides fade">
+      <img src="extra/img5.jpg" style="width:100%" height="500">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="extra/img6.jpg" style="width:100%" height="500">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="extra/img7.jpg" style="width:100%" height="500">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="extra/img8.jpg" style="width:100%" height="500">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="extra/img9.jpg" style="width:100%" height="500">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="extra/img10.jpg" style="width:100%" height="500">
+    </div>
+  
+ 
+  </div>
+  <br>
+  
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+
+
+
+  <h3>Choose the bird's size you're watching.</h3>
+  <form action="/birds" method="post">
+    <label for="size">Size:</label>
+    <select name="size" id="size">
+      <option value="small">small</option>
+      <option value="medium">medium</option>
+      <option value="large">large</option>
+    </select>
+    <button type="submit">Submit</button>
+    
+  </form>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+</body>
+
+
+
+</html>

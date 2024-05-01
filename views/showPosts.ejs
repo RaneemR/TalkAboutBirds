@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previous Posts</title>
+</head>
+<body>
+
+<% if (posts.length > 0) { %>
+    <div class="grid">
+        <h1>Previous posts about: <%= posts[0].commonName %></h1>
+        <ul>
+        <% for(post of posts) { %>
+                    <h3>Author: <%= post.author %> Date: <%= post.createdDate %> </h3>
+                    <p><b>Title: <%= post.title %> </b></p>
+                    <p><%= post.body %></p>
+                    <hr>
+                    <!-- and so on for other properties -->
+        <% } %>
+    </div>
+<% } else { %>
+    <h3>No posts found!</h3>
+<% } %>
+<a href="/">Back to Bird Size Selection</a>
+
+</body>
+</html>

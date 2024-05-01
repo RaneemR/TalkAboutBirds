@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/birds.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+</head>
+<body>
+  <div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/login">Login</a>
+    <a href="/signup">Signup</a>
+    <a href="/createBirds">Add Birds</a>
+    <a href="/createPosts">Add Post</a>
+
+  </div>
+  <h1>Birds with <%= posts[0].birdID %> size. Click on bird to see the posts</h1>
+  <ul>
+    <% posts.forEach((post) => { %>
+      <li> <%= post.author %> - Body is <%= post.body %></li>
+
+     <!---- <li> /birds/:<%= bird.birdID %> <%= bird.commonName %> - Movement is <%= bird.movement %></li>-->
+    <% }) %>
+  </ul>
+</body>
+</html>

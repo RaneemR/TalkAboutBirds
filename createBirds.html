@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<h1>New Bird Information</h1>
+
+
+<form style="border:1px solid #ccc">
+    <div class="bg-img">
+  <div class="container">
+
+    <label for="commonName"><b>Common Name</b></label></p>
+    <input type="text" placeholder="Enter Bird Name" name="commonName" required></p>
+
+    <label for="tailType"><b>Tail Type</b></label></p>
+    <input type="text" placeholder="Enter Tail Type" name="tailType" required></p>
+
+    <label for="wingType"><b>Wing Type</b></label></p>
+    <input type="text" placeholder="Enter Wing Type" name="wingType" required></p>
+
+    <label for="movement"><b>Movement</b></label></p>
+    <input type="text" placeholder="Enter Movement" name="movement" required></p>
+
+    <label for="size"><b>Size</b></label></p>
+    <input type="text" placeholder="Enter Size" name="size" required></p>
+
+    <label for="color"><b>Color</b></label></p>
+    <input type="text" placeholder="Enter Color" name="color" required></p>
+    
+
+
+    <div class="clearfix">
+      <button type="submit" class="signupbtn">Create</button>
+    </div>
+  </div>
+</div>
+</form>
+
+
+<script>
+    const myForm = document.querySelector('form');
+    const inputs = document.querySelectorAll('input');
+    myForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        fetch('/addBirds', {
+            method: 'POST'
+            , body: JSON.stringify({
+                commonName: inputs[0].value
+                , tailType: inputs[1].value
+                , wingType: inputs[2].value
+                , movement: inputs[3].value
+                , size: inputs[4].value
+                , color: inputs[5].value
+            })
+            , headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (rep) {
+            return rep.json()
+        }).then(function (body) {
+            console.log(body);
+        })
+    })
+</script>
+</main>
+</body>
+</html>

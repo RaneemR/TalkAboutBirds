@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+
+<h1>Let's Talk Birds Sign Up Page</h1>
+<p>A space to enjoy talking with others about bird watching.</p>
+
+
+
+<form style="border:1px solid #ccc">
+  
+  <div class="container">
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="userN"><b>Uername</b></label></p>
+    <input type="text" placeholder="Enter Username" name="username" required></p>
+
+    <label for="profile"><b>Profile</b></label></p>
+    <input type="text" placeholder="Enter Profile" name="profile" required></p>
+
+    <label for="email"><b>Email</b></label></p>
+    <input type="text" placeholder="Enter Email" name="email" required></p>
+
+    <label for="psw"><b>Password</b></label></p>
+    <input type="password" placeholder="Enter Password" name="password" required></p>
+
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
+
+
+<script>
+    const myForm = document.querySelector('form');
+    const inputs = document.querySelectorAll('input');
+    myForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        fetch('/signup', {
+            method: 'POST'
+            , body: JSON.stringify({
+                username: inputs[0].value
+                , profile: inputs[1].value
+                , email: inputs[2].value
+                , password: inputs[3].value
+            })
+            , headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (rep) {
+            return rep.json()
+        }).then(function (body) {
+            console.log(body);
+        })
+    })
+</script>
+</main>
+</body>
+</html>

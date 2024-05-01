@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/birds.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+</head>
+<body>
+  <div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/createBirds">Add Bird</a>
+    <a href="/createPosts">Add Post</a>
+    <a href="/signup">Signup</a>
+    <a href="/login">Login</a>
+
+  </div>
+  <h1>Birds with a <%= birds[0].size %> size. </h1>
+   <h2>Click on the bird's name to see the related posts.</h2> 
+
+
+  <div id="collectionTableDiv">
+    <table id="showTableCollection">
+        <tr>
+            <th>Name</th>
+            <th>Tail</th>
+            <th>Wing</th>
+            <th>Movement</th>
+            <th>Color</th>
+        </tr>
+        
+        <% for(var i=0; i < birds.length; i++) { %>
+            <tr>
+                <td> <a href = "/posts/<%= birds[i].birdID %>"> <%= birds[i].commonName %></a></td>
+                <td><%= birds[i].tailType %></td>
+                <td><%= birds[i].wingType %></td>
+                <td><%= birds[i].movement %></td>
+                <td><%= birds[i].color %></td>
+            </tr>
+        <% } %>
+
+</div>
+  
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+
+<h1>Post Information</h1>
+
+
+<form style="border:1px solid #ccc">
+  
+  <div class="container">
+
+
+    <label for="userN"><b>User</b></label></p>
+    <input type="text" placeholder="Enter Username" name="author" required></p>
+
+    <label for="birdID"><b>Bird ID</b></label></p>
+    <input type="text" placeholder="Enter Bird ID" name="birdID" required></p>
+
+    <!--label for="ceatedDate"><b>Date</b></label></p>
+    <input type="text" placeholder="Enter Date" name="ceatedDate" required></p>-->
+
+    <label for="title"><b>Title</b></label></p>
+    <input type="text" placeholder="Enter Title" name="title" required></p>
+
+    <label for="psw"><b>Body</b></label></p>
+    <!--input type="text" placeholder="Enter Post" name="body" required></p>-->
+    <textarea id="body" name="body" placeholder="Description.." rows="8" cols="80"></textarea>
+
+ 
+    <div class="clearfix">
+      <button type="submit" class="signupbtn">Create</button>
+    </div>
+  </div>
+</form>
+
+
+<script>
+    const myForm = document.querySelector('form');
+    const inputs = document.querySelectorAll('input');
+    myForm.addEventListener('submit', function (e) {
+
+      if (inputs[0].value == "") {
+    alert("Fill out the username");
+    return false;
+      }
+
+      if (inputs[1].value == "") {
+    alert("Input a valid ID number");
+    return false;
+      }
+
+      if (inputs[2].value == "") {
+    alert("Include a title");
+    return false;
+      }
+
+        e.preventDefault();
+        fetch('/addPost', {
+            method: 'POST'
+            , body: JSON.stringify({
+                author: inputs[0].value
+                , birdID: inputs[1].value
+                , createdDate: new Date().toJSON().slice(0,10)
+                , title: inputs[2].value
+                , body: document.getElementById("body").value
+            })
+            , headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (rep) {
+            return rep.json()
+        }).then(function (body) {
+            console.log(body);
+        })
+    })
+</script>
+</main>
+</body>
+</html>
